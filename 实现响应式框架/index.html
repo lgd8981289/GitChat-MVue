@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <script src="./mvue/patch.js"></script>
+    <script src="./mvue/dep.js"></script>
+    <script src="./mvue/directive.js"></script>
+    <script src="./mvue/watcher.js"></script>
+    <script src="./mvue/compile.js"></script>
+    <script src="./mvue/observer.js"></script>
+    <script src="./mvue/mvue.js"></script>
+    
+</head>
+<body>
+    
+    <div id="app">
+        <input type="text" v-model='msg'>
+        <div>
+            <p>{{msg}}</p>
+        </div>
+    </div>
+
+    <script>
+        var vm = new MVue({
+            el: '#app',
+            data: {
+                msg: 'hello'
+            }
+        });
+    </script>
+
+</body>
+</html>
