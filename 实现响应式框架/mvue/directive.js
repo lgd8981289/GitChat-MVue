@@ -5,6 +5,10 @@
  */
 var directives = {
 
+    dir: function (vm, node, exp, dir) {
+        this['_'+dir](vm, node, exp);
+    },
+
     _bind: function (vm, exp, patchFn) {
         new Watcher(vm,exp, patchFn);
     },
@@ -24,7 +28,7 @@ var directives = {
     /**
      * v-model事件处理
      */
-    model: function (vm, node, exp) {
+    _model: function (vm, node, exp) {
         this._link(vm, node, exp, 'model');
 
         var val = vm._getVal(exp);
@@ -39,7 +43,11 @@ var directives = {
     /**
      * {{}}事件处理
      */
-    text: function (vm, node, exp) {
+    _text: function (vm, node, exp) {
         this._link(vm, node, exp, 'text');
+    },
+
+    _show: function (vm, node, exp) {
+        this._link(vm, node, exp, 'show');
     }
 }

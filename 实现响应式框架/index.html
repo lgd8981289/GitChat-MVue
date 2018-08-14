@@ -23,6 +23,9 @@
             <p>{{msg}}</p>
         </div>
 
+        <p v-show="isShow">
+            isShow测试标签
+        </p>
         
     </div>
 
@@ -30,7 +33,8 @@
         var vm = new MVue({
             el: '#app',
             data: {
-                msg: 'hello'
+                msg: 'hello',
+                isShow: true
             }
         });
     </script>

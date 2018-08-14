@@ -77,8 +77,9 @@ Compile.prototype = {
             }
 
             var exp = attr.value;
-            // 匹配v-model指令
-            directives.model($this.$vm, node, exp);
+            var dir = attr.nodeName.substring(2);
+            // 匹配指令
+            directives.dir($this.$vm, node, exp, dir);
             node.removeAttribute(attr.name);
         });
     },
@@ -86,7 +87,7 @@ Compile.prototype = {
      * 解析{{*}}
      */
     compileTextNode: function (node, exp) {
-        directives.text(this.$vm, node, exp);
+        directives.dir(this.$vm, node, exp, 'text');
     },
     /**
      * 判断是否是已注册的指令，这里就判断是否包含 v-

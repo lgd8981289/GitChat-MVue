@@ -7,6 +7,8 @@
  */
 function patch (vm, node, exp, dir) {
 
+
+
     switch (dir) {
         case 'model':
         /**
@@ -21,6 +23,18 @@ function patch (vm, node, exp, dir) {
          */
         return function (node , val) {
             node.textContent = typeof val === 'undefined' ? '' : val;
+        }
+        case 'show':
+        /**
+         * {{*}}
+         */
+        return function (node , val) {
+            debugger
+            if (node._originalDisplay === undefined) {
+                node._originalDisplay = node.style.display;
+            }
+
+            val ? node.style.display = node._originalDisplay : node.style.display = 'none';
         }
     }
 

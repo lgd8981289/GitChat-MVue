@@ -24,6 +24,7 @@ Watcher.prototype = {
         if (oldVal === newVal) {
             return;
         }
+        this.value = newVal;
         this.$patchFn.call(this.$vm, newVal);
     },
 

@@ -1,4 +1,5 @@
 function MVue (options) {
+    var vm = this;
     this.$options = options;
     this._data = options.data || {};
 
