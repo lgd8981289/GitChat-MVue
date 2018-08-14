@@ -31,7 +31,7 @@ Observer.prototype = {
                 if (value === newValue) {
                     return;
                 }
-                debugger
+                
                 value = newValue;
                 dep.notify();
             },

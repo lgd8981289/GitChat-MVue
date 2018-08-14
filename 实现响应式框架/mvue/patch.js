@@ -29,7 +29,7 @@ function patch (vm, node, exp, dir) {
          * {{*}}
          */
         return function (node , val) {
-            debugger
+            
             if (node._originalDisplay === undefined) {
                 node._originalDisplay = node.style.display;
             }

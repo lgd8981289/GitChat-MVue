@@ -78,7 +78,11 @@ Compile.prototype = {
 
             var exp = attr.value;
             var dir = attr.nodeName.substring(2);
+            
             // 匹配指令
+            if ($this.isEvent(dir)) {
+                dir = dir.substring(3);
+            }
             directives.dir($this.$vm, node, exp, dir);
             node.removeAttribute(attr.name);
         });
@@ -94,6 +98,12 @@ Compile.prototype = {
      */
     isDirective: function (attrNodeName) {
         return attrNodeName.indexOf('v-') === 0;
+    },
+    /**
+     * 判断是否是事件指令
+     */
+    isEvent: function (dir) {
+        return dir.indexOf('on') === 0;
     },
     /**
      * 判断elmNode节点

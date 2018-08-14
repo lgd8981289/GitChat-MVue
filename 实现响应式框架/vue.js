@@ -1760,7 +1760,7 @@ var callbacks = [];
 var pending = false;
 
 function flushCallbacks () {
-  debugger
+  
   pending = false;
   var copies = callbacks.slice(0);
   callbacks.length = 0;
@@ -1831,7 +1831,7 @@ if (typeof Promise !== 'undefined' && isNative(Promise)) {
  */
 function withMacroTask (fn) {
   return fn._withTask || (fn._withTask = function () {
-    debugger
+    
     useMacroTask = true;
     var res = fn.apply(null, arguments);
     useMacroTask = false;
@@ -1840,7 +1840,7 @@ function withMacroTask (fn) {
 }
 
 function nextTick (cb, ctx) {
-  debugger
+  
   var _resolve;
   callbacks.push(function () {
     if (cb) {
@@ -3063,7 +3063,7 @@ function queueWatcher (watcher) {
   var id = watcher.id;
   if (has[id] == null) {
     has[id] = true;
-    debugger
+    
     if (!flushing) {
       queue.push(watcher);
     } else {
@@ -3078,7 +3078,7 @@ function queueWatcher (watcher) {
     // queue the flush
     if (!waiting) {
       waiting = true;
-      debugger
+      
       nextTick(flushSchedulerQueue);
     }
   }

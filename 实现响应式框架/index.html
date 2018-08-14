@@ -26,6 +26,8 @@
         <p v-show="isShow">
             isShow测试标签
         </p>
+
+        <input type="button" v-on:click="changeShow" value="changeShow">
         
     </div>
 
@@ -35,6 +37,11 @@
             data: {
                 msg: 'hello',
                 isShow: true
+            },
+            methods: {
+                changeShow: function () {
+                    this.isShow = !this.isShow;
+                }
             }
         });
     </script>

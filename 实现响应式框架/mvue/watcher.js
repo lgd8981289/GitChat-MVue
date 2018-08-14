@@ -14,10 +14,15 @@ function Watcher (vm, expOrFn, patchFn) {
 }
 
 Watcher.prototype = {
+    /**
+     * 更新
+     */
     update: function () {
         this.run();
     },
-
+    /**
+     * 执行更新操作
+     */
     run: function () {
         var oldVal = this.value;
         var newVal = this.get();
@@ -27,7 +32,9 @@ Watcher.prototype = {
         this.value = newVal;
         this.$patchFn.call(this.$vm, newVal);
     },
-
+    /**
+     * 订阅Dep
+     */
     addDep: function (dep) {
         if (this.depIds.hasOwnProperty(dep.id)) {
             return;
@@ -35,6 +42,9 @@ Watcher.prototype = {
         dep.addSub(this);
         this.depIds[dep.id] = dep;
     },
+    /**
+     * 获取exp对应值，这时会激活observer中的get事件
+     */
     get: function () {
         Dep.target = this;
         var value = this.getter.call(this.$vm, this.$vm._data);
@@ -42,7 +52,7 @@ Watcher.prototype = {
         return value;
     },
     /**
-     * 获取exp的对应值
+     * 获取exp的对应值，应对a.b.c
      */
     parsePath: function (path) {
         var segments = path.split('.');

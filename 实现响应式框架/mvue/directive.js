@@ -5,6 +5,9 @@
  */
 var directives = {
 
+    /**
+     * 分配指令
+     */
     dir: function (vm, node, exp, dir) {
         this['_'+dir](vm, node, exp);
     },
@@ -47,7 +50,21 @@ var directives = {
         this._link(vm, node, exp, 'text');
     },
 
+    /**
+     * isShow
+     */
     _show: function (vm, node, exp) {
         this._link(vm, node, exp, 'show');
+    },
+
+    /**
+     * v-on:click
+     */
+    _click: function (vm, node, exp) {
+        var fn = vm.$options.methods && vm.$options.methods[exp.replace('()', '')];
+
+        if (fn) {
+            node.addEventListener('click', fn.bind(vm), false);
+        }
     }
 }
