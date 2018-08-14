@@ -79,6 +79,7 @@ Compile.prototype = {
             var exp = attr.value;
             // 匹配v-model指令
             directives.model($this.$vm, node, exp);
+            node.removeAttribute(attr.name);
         });
     },
     /**
